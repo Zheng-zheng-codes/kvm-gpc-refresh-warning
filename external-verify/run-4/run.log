@@ -1,0 +1,7 @@
+[2026-11-21 16:44:55] tag=kvm-4 prog=/workspace/validation/replay-sweep-20261121/recipes/kvm.prog sha=2e8ab08256a373b25458e6ca5fdbc6369ca338e5d2d1cd08a95abbd24e05102f runsec=900 procs=1 repeat=1 cores=16-23 port=12994
+[2026-11-21 16:46:42] ssh-up after 33s
+[2026-11-21 16:46:55] starting syz-execprog (detached)
+STARTED
+[2026-11-21 16:48:56] detach launch had ssh hiccup (continuing)
+[2026-11-21 16:48:56] exec elapsed=121s hit=1
+[2026-11-21 16:50:21] TARGET-HIT: __kvm_gpc_refresh+0x

@@ -1,0 +1,15 @@
+Extracting prog: 0s
+Minimizing prog: 0s
+Simplifying prog options: 0s
+Extracting C: 0s
+Simplifying C: 0s
+
+
+kernsight state-primed reproduction:
+14:52:14 state-primed repro started for "WARNING in __kvm_gpc_refresh" (74 log programs, target pre-run state=true, budget=20m0s, workers=1)
+14:54:26 crash reproduced during crash-log replay (entry 74/74)
+14:56:46 state-primed repro verified on a freshly replayed VM
+14:59:08 state-primed repro verified on a freshly replayed VM
+14:59:08 independent verification: 2/2 target hits (required 2/2)
+14:59:08 syz reproducer is ready; C conversion is deferred to the independent budgeted task (set KERNSIGHT_REPRO_AUTO_C=1 to convert in the automatic path)
+14:59:08 state-primed repro crashed (distance n/a -> n/a, 74 replay + 0 priming programs, 0 infra failures, 0 vm recoveries, verified=true)

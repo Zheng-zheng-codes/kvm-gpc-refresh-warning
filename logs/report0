@@ -1,0 +1,127 @@
+------------[ cut here ]------------
+kvm_is_error_gpa(gpa) == kvm_is_error_hva(uhva)
+WARNING: arch/x86/kvm/../../../virt/kvm/pfncache.c:267 at __kvm_gpc_refresh+0x1692/0x1e40 virt/kvm/pfncache.c:267, CPU#3: syz.4.1706/44861
+Modules linked in: cifs(E) smbdirect(E) 9pnet_rdma(E) rdma_cm(E) iw_cm(E) ib_cm(E) nbd(E) efivarfs(E) ext2(E) smc_diag(E) smc(E) ib_core(E) dm_multipath(E)
+CPU: 3 UID: 0 PID: 44861 Comm: syz.4.1706 Tainted: G            EL      7.4.0-rc3-kernsight-kasan #1 PREEMPT(full) 
+Tainted: [E]=UNSIGNED_MODULE, [L]=SOFTLOCKUP
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:__kvm_gpc_refresh+0x1692/0x1e40 virt/kvm/pfncache.c:267
+Code: ea 03 80 3c 02 00 0f 85 63 05 00 00 49 89 9d 00 01 00 00 48 8b 3c 24 45 31 e4 e8 e9 24 b2 0a e9 83 fa ff ff e8 0f 08 8f 00 90 <0f> 0b 90 41 bc ea ff ff ff e9 6f fa ff ff 49 8d 85 11 01 00 00 48
+RSP: 0018:ffa00000075cf360 EFLAGS: 00010202
+RAX: 0000000000000890 RBX: ffffffffffffffff RCX: ffa0000016fad000
+RDX: 0000000000080000 RSI: ffffffff813b3411 RDI: 0000000000000000
+RBP: ff11000000000000 R08: ffffffff813b1e5b R09: 0000000000000001
+R10: ffa00000075cf4c8 R11: 0000000000000001 R12: ffffffffffffff01
+R13: ff1100016c13db78 R14: ff11000000000001 R15: ff1100016c13e118
+FS:  00007fa97bf4e640(0000) GS:ff1100020dd19000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 000055559093be72 CR3: 00000001495b8000 CR4: 0000000000753ef0
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ kvm_gpc_refresh+0xed/0x160 virt/kvm/pfncache.c:382
+ kvm_xen_set_evtchn.part.0+0x1b3/0x280 arch/x86/kvm/xen.c:2014
+ kvm_xen_set_evtchn arch/x86/kvm/xen.c:2115 [inline]
+ kvm_xen_hvm_evtchn_send+0x22f/0x290 arch/x86/kvm/xen.c:2105
+ kvm_arch_vm_ioctl+0x118b/0x15b0 arch/x86/kvm/x86.c:4681
+ kvm_vm_ioctl+0xdc2/0x2800 virt/kvm/kvm_main.c:5491
+ vfs_ioctl fs/ioctl.c:52 [inline]
+ __do_sys_ioctl fs/ioctl.c:598 [inline]
+ __se_sys_ioctl fs/ioctl.c:584 [inline]
+ __x64_sys_ioctl+0x194/0x210 fs/ioctl.c:584
+ do_syscall_x64 arch/x86/entry/syscall_64.c:61 [inline]
+ do_syscall_64+0x132/0x7c0 arch/x86/entry/syscall_64.c:89
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7fa97afb2b7d
+Code: 02 b8 ff ff ff ff c3 66 0f 1f 44 00 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007fa97bf4df98 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: ffffffffffffffda RBX: 00007fa97b246090 RCX: 00007fa97afb2b7d
+RDX: 0000200000000100 RSI: 00000000400caed0 RDI: 0000000000000006
+RBP: 00007fa97b050273 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007fa97b246128 R14: 00007fa97b246090 R15: 00007fa97bf2e000
+ </TASK>
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+Modules linked in: cifs(E) smbdirect(E) 9pnet_rdma(E) rdma_cm(E) iw_cm(E) ib_cm(E) nbd(E) efivarfs(E) ext2(E) smc_diag(E) smc(E) ib_core(E) dm_multipath(E)
+CPU: 3 UID: 0 PID: 44861 Comm: syz.4.1706 Tainted: G            EL      7.4.0-rc3-kernsight-kasan #1 PREEMPT(full) 
+Tainted: [E]=UNSIGNED_MODULE, [L]=SOFTLOCKUP
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+RIP: 0010:__kvm_gpc_refresh+0x1692/0x1e40
+Code: ea 03 80 3c 02 00 0f 85 63 05 00 00 49 89 9d 00 01 00 00 48 8b 3c 24 45 31 e4 e8 e9 24 b2 0a e9 83 fa ff ff e8 0f 08 8f 00 90 <0f> 0b 90 41 bc ea ff ff ff e9 6f fa ff ff 49 8d 85 11 01 00 00 48
+RSP: 0018:ffa00000075cf360 EFLAGS: 00010202
+RAX: 0000000000000890 RBX: ffffffffffffffff RCX: ffa0000016fad000
+RDX: 0000000000080000 RSI: ffffffff813b3411 RDI: 0000000000000000
+RBP: ff11000000000000 R08: ffffffff813b1e5b R09: 0000000000000001
+R10: ffa00000075cf4c8 R11: 0000000000000001 R12: ffffffffffffff01
+R13: ff1100016c13db78 R14: ff11000000000001 R15: ff1100016c13e118
+FS:  00007fa97bf4e640(0000) GS:ff1100020dd19000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 000055559093be72 CR3: 00000001495b8000 CR4: 0000000000753ef0
+PKRU: 80000000
+Call Trace:
+ <TASK>
+ kvm_gpc_refresh+0xed/0x160
+ kvm_xen_set_evtchn.part.0+0x1b3/0x280
+ kvm_xen_hvm_evtchn_send+0x22f/0x290
+ kvm_arch_vm_ioctl+0x118b/0x15b0
+ kvm_vm_ioctl+0xdc2/0x2800
+ __x64_sys_ioctl+0x194/0x210
+ do_syscall_64+0x132/0x7c0
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7fa97afb2b7d
+Code: 02 b8 ff ff ff ff c3 66 0f 1f 44 00 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007fa97bf4df98 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: ffffffffffffffda RBX: 00007fa97b246090 RCX: 00007fa97afb2b7d
+RDX: 0000200000000100 RSI: 00000000400caed0 RDI: 0000000000000006
+RBP: 00007fa97b050273 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007fa97b246128 R14: 00007fa97b246090 R15: 00007fa97bf2e000
+ </TASK>
+Kernel panic - not syncing: kernel: panic_on_warn set ...
+CPU: 3 UID: 0 PID: 44861 Comm: syz.4.1706 Tainted: G            EL      7.4.0-rc3-kernsight-kasan #1 PREEMPT(full) 
+Tainted: [E]=UNSIGNED_MODULE, [L]=SOFTLOCKUP
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Call Trace:
+ <TASK>
+ dump_stack_lvl+0x3d/0x1b0
+ vpanic+0x726/0x7f0
+ panic+0xc7/0xd0
+ check_panic_on_warn+0xb6/0xc0
+ __warn+0x10d/0x400
+ __report_bug+0x4aa/0x5a0
+ report_bug+0xb3/0x210
+ handle_bug+0x2d7/0x4e0
+ exc_invalid_op+0x35/0x80
+ asm_exc_invalid_op+0x1a/0x20
+RIP: 0010:__kvm_gpc_refresh+0x1692/0x1e40
+Code: ea 03 80 3c 02 00 0f 85 63 05 00 00 49 89 9d 00 01 00 00 48 8b 3c 24 45 31 e4 e8 e9 24 b2 0a e9 83 fa ff ff e8 0f 08 8f 00 90 <0f> 0b 90 41 bc ea ff ff ff e9 6f fa ff ff 49 8d 85 11 01 00 00 48
+RSP: 0018:ffa00000075cf360 EFLAGS: 00010202
+RAX: 0000000000000890 RBX: ffffffffffffffff RCX: ffa0000016fad000
+RDX: 0000000000080000 RSI: ffffffff813b3411 RDI: 0000000000000000
+RBP: ff11000000000000 R08: ffffffff813b1e5b R09: 0000000000000001
+R10: ffa00000075cf4c8 R11: 0000000000000001 R12: ffffffffffffff01
+R13: ff1100016c13db78 R14: ff11000000000001 R15: ff1100016c13e118
+ kvm_gpc_refresh+0xed/0x160
+ kvm_xen_set_evtchn.part.0+0x1b3/0x280
+ kvm_xen_hvm_evtchn_send+0x22f/0x290
+ kvm_arch_vm_ioctl+0x118b/0x15b0
+ kvm_vm_ioctl+0xdc2/0x2800
+ __x64_sys_ioctl+0x194/0x210
+ do_syscall_64+0x132/0x7c0
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7fa97afb2b7d
+Code: 02 b8 ff ff ff ff c3 66 0f 1f 44 00 00 f3 0f 1e fa 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 a8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007fa97bf4df98 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: ffffffffffffffda RBX: 00007fa97b246090 RCX: 00007fa97afb2b7d
+RDX: 0000200000000100 RSI: 00000000400caed0 RDI: 0000000000000006
+RBP: 00007fa97b050273 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007fa97b246128 R14: 00007fa97b246090 R15: 00007fa97bf2e000
+ </TASK>
+Kernel Offset: disabled
+Rebooting in 86400 seconds..
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
