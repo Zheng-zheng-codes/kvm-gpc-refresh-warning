@@ -23,8 +23,8 @@ Result: **5/5**, times 120-121 s — the most deterministic reproduction in
 this collection.
 
 Each `run-N/` contains `serial.log` (full guest console), `run.log` (harness
-log with hashes and timings), `execprog-out.log` (syz-execprog stdout) and
-the `HIT` marker.
+log with hashes and timings) and the `HIT` marker (the timestamp at which the
+target was detected).
 
 Note: the reproducer must run with `-procs=1`; `-procs=8` did not reproduce
 the warning under our tests.

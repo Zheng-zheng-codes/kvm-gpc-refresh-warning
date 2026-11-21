@@ -82,7 +82,8 @@ README.md               this document
 environment.txt         kernel/guest hashes and the exact QEMU command line
 kernel.config           kernel configuration used for the reproduction
 description             original crash title
-SHA256SUMS              checksums for every file listed here
+SHA256SUMS              SHA-256 checksums covering every file in this repository
+                        (including the five verification runs and their HIT markers)
 logs/                   original crash evidence
   log0 — fuzzer log of the verified attempt
   machineInfo0 — VM/environment record
